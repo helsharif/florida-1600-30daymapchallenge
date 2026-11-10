@@ -1,6 +1,6 @@
 # Florida, circa 1600
 
-**#30DayMapChallenge 2026 · Day 10 · “Prompting Only” · November 10**
+**#30DayMapChallenge 2026 · Day 10 · “Prompting Only” · November 10, 2026**
 
 The [official Day 10 theme](https://30daymapchallenge.com/#2026-themes) asks participants to have AI produce a map from start to finish through chat or the command line. Husayn El Sharif supplied the historical and visual brief and directed the work through prompts; OpenAI Codex researched sources, authored and ran the Python workflow, inspected renders, and prepared this repository. This is a prompting-only challenge entry, not an assertion that every scientific assumption has been independently validated. AI-generated code and editorial judgments are documented and reviewable.
 
