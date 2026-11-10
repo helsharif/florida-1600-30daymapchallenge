@@ -1,0 +1,59 @@
+{
+  "seed": 1600,
+  "crs": "EPSG:3087",
+  "resolution_m": 250,
+  "shape": [
+    3320,
+    3700
+  ],
+  "class_pixels": {
+    "0": 9931521,
+    "1": 33710,
+    "2": 812560,
+    "3": 23439,
+    "4": 137550,
+    "5": 58933,
+    "6": 465229,
+    "7": 25001,
+    "8": 167863,
+    "9": 58669,
+    "12": 111463,
+    "13": 131273,
+    "14": 27014,
+    "15": 13176,
+    "16": 28675,
+    "17": 29599,
+    "18": 57751,
+    "20": 136689,
+    "21": 33885
+  },
+  "provenance_pixels": {
+    "0": 9931521,
+    "1": 2144074,
+    "2": 2860,
+    "3": 204298,
+    "4": 1247
+  },
+  "versions": {
+    "numpy": "2.4.4",
+    "geopandas": "1.2.0",
+    "rasterio": "1.5.2",
+    "scipy": "1.18.0",
+    "matplotlib": "3.11.2",
+    "shapely": "2.2.0",
+    "pyproj": "3.8.0",
+    "pillow": "12.2.0",
+    "pymupdf": "2.1"
+  },
+  "inputs_sha256": {
+    "davis1967_metadata.json": "ef171f423ce5b08c504af7e5db149d49724a94affb826d7d353aa5013f62532b",
+    "davis1967.geojson": "2718a1d2caf81dc050c7624b5426f20898e5f9a9cac92b083a74c58dfa3f2836",
+    "ne_10m_land.zip": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
+    "ne_10m_lakes.zip": "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a",
+    "ne_10m_rivers_lake_centerlines.zip": "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38",
+    "sfwmd2007.pdf": "ed9f12b0cdabae5a7098a9b00df19d1927a602c35c3fd878232b5a86ec792a40",
+    "kissimmee1954_metadata.json": "dd5c064f69cc99ccd484b8ffd3e57fca78b21e2a4903852d792d0cee1fdf1a26",
+    "kissimmee1954.geojson": "b264d27dac93308346efe6a6b5902aa11ae1c494e1856d9e16acfbc27898cf2d",
+    "everglades_registration.json": "02ff9c67d26b1a99834c04abc36119199facb17f51a1b2a71ba776f2df04fc73"
+  }
+}

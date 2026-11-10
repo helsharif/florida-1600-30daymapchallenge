@@ -1,0 +1,55 @@
+{
+  "landscape_classes.tif": {
+    "shape": [
+      3320,
+      3700
+    ],
+    "bands": 1,
+    "crs": "EPSG:3087",
+    "bytes": 224561
+  },
+  "evidence_provenance.tif": {
+    "shape": [
+      3320,
+      3700
+    ],
+    "bands": 1,
+    "crs": "EPSG:3087",
+    "bytes": 103836
+  },
+  "satellite_style_rgb.tif": {
+    "shape": [
+      3320,
+      3700
+    ],
+    "bands": 3,
+    "crs": "EPSG:3087",
+    "bytes": 6665944
+  },
+  "geopackage_layers": [
+    "kissimmee_1954_reference",
+    "historical_sites",
+    "river_course_proxies",
+    "davis1967_reference",
+    "everglades_generalized_proxy"
+  ],
+  "Florida_circa_1600.png": {
+    "pixels": [
+      6000,
+      6300
+    ]
+  },
+  "Florida_circa_1600_preview.jpg": {
+    "pixels": [
+      1600,
+      1680
+    ]
+  },
+  "Evidence_provenance.png": {
+    "pixels": [
+      2160,
+      2160
+    ]
+  },
+  "validation": "PASS: structure, CRS, coverage, class handling, site status, image integrity; no scientific accuracy certification"
+}

@@ -1,0 +1,154 @@
+{
+  "0": {
+    "name": "Outside reconstruction",
+    "rgb": [
+      13,
+      41,
+      55
+    ]
+  },
+  "1": {
+    "name": "COASTAL STRAND",
+    "rgb": [
+      150,
+      151,
+      113
+    ]
+  },
+  "2": {
+    "name": "PINE FLATWOODS",
+    "rgb": [
+      74,
+      100,
+      66
+    ]
+  },
+  "3": {
+    "name": "SOUTHERN SLASH PINE FORESTS",
+    "rgb": [
+      58,
+      91,
+      58
+    ]
+  },
+  "4": {
+    "name": "FORESTS OF MIXED HARDWOODS AND PINES",
+    "rgb": [
+      52,
+      78,
+      46
+    ]
+  },
+  "5": {
+    "name": "SAND PINE SCRUB FORESTS",
+    "rgb": [
+      111,
+      119,
+      78
+    ]
+  },
+  "6": {
+    "name": "FORESTS OF LONGLEAF PINE AND XEROPHYTIC OAKS",
+    "rgb": [
+      104,
+      116,
+      72
+    ]
+  },
+  "7": {
+    "name": "CYPRESS SWAMP FORESTS",
+    "rgb": [
+      45,
+      73,
+      57
+    ]
+  },
+  "8": {
+    "name": "SWAMP FORESTS MOSTLY OF HARDWOODS",
+    "rgb": [
+      38,
+      65,
+      48
+    ]
+  },
+  "9": {
+    "name": "MANGROVE SWAMP FORESTS AND COASTAL MARSHES",
+    "rgb": [
+      44,
+      83,
+      63
+    ]
+  },
+  "12": {
+    "name": "HARDWOOD FORESTS",
+    "rgb": [
+      45,
+      73,
+      43
+    ]
+  },
+  "13": {
+    "name": "GRASSLANDS OF PRAIRIE TYPE",
+    "rgb": [
+      116,
+      126,
+      74
+    ]
+  },
+  "14": {
+    "name": "REGION OF OPEN SCRUB CYPRESS",
+    "rgb": [
+      81,
+      104,
+      77
+    ]
+  },
+  "15": {
+    "name": "FORESTS OF ABUNDANT CABBAGE PALMS",
+    "rgb": [
+      64,
+      94,
+      58
+    ]
+  },
+  "16": {
+    "name": "FRESH WATER MARSHES",
+    "rgb": [
+      92,
+      111,
+      72
+    ]
+  },
+  "17": {
+    "name": "WET TO DRY PRAIRIE MARSHES ON MARL AND ROCKLAND",
+    "rgb": [
+      123,
+      133,
+      93
+    ]
+  },
+  "18": {
+    "name": "WATER",
+    "rgb": [
+      31,
+      66,
+      65
+    ]
+  },
+  "20": {
+    "name": "Generalized long-hydroperiod / ridge-and-slough marsh",
+    "rgb": [
+      97,
+      110,
+      63
+    ]
+  },
+  "21": {
+    "name": "Medium-hydroperiod marsh",
+    "rgb": [
+      111,
+      122,
+      77
+    ]
+  }
+}

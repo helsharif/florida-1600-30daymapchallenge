@@ -1,0 +1,10 @@
+.env
+.env.*
+.venv/
+__pycache__/
+data/*
+!data/everglades_registration.json
+outputs/*.tif
+outputs/*.gpkg
+discover.py
+*.log

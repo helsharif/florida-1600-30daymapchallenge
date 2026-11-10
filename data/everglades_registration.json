@@ -1,0 +1,21 @@
+{
+  "source": "SFWMD HESM-02 (2007), Figure 15, printed p.37 / PDF index52",
+  "method": "Manual north-lake anchor + published scale; assumed north-up UTM17N",
+  "anchor_image_xy": [
+    796,
+    380
+  ],
+  "anchor_lonlat": [
+    -80.83,
+    27.2
+  ],
+  "metres_per_pixel": 314.01834146341463,
+  "crop_xyxy": [
+    635,
+    370,
+    992,
+    1080
+  ],
+  "positional_uncertainty": "Unvalidated regional registration; allow roughly 5 km, not a statistical confidence interval",
+  "limitations": "Generalized marsh classes only; not native PDLD, not a c.1600 observation; source ridge/slough texture not resolved."
+}
