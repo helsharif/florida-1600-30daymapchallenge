@@ -173,7 +173,7 @@ def main():
 def render(rgb,sites,rivers,provenance):
     plt.rcParams.update({'font.family':'DejaVu Sans','text.color':'#e9eeeb'})
     fig=plt.figure(figsize=(20,21),facecolor='#0b202b')
-    ax=fig.add_axes([.025,.135,.95,.765]); ax.set_facecolor('#0d2937')
+    ax=fig.add_axes([.025,.15,.95,.73]); ax.set_facecolor('#0d2937')
     ax.imshow(rgb,extent=extent,origin='upper',interpolation='bilinear',zorder=0)
     ax.set_xlim(X0,X1); ax.set_ylim(Y0,Y1); ax.set_aspect('equal'); ax.set_axis_off()
     rivers.plot(ax=ax,color='#789c98',linewidth=.55,alpha=.7,zorder=2)
@@ -181,18 +181,18 @@ def render(rgb,sites,rivers,provenance):
     def txt(lon,lat,s,size=11,color='#e9eeeb',**kw):
         x,y=xy(lon,lat); return ax.text(x,y,s,fontsize=size,color=color,path_effects=halo,zorder=6,**kw)
     # Familiar water labels are modern orientation aids, not claimed 1600 toponyms.
-    for lon,lat,s,sz,rot in [(-85.5,27.9,'G U L F   O F   M E X I C O',16,0),(-79.9,27.5,'A T L A N T I C   O C E A N',15,90),(-81.13,24.68,'F L O R I D A   K E Y S',10,12),(-80.75,27.02,'Lake\nOkeechobee',9,0),(-81.26,26.03,'B I G   C Y P R E S S',9,0),(-80.63,26.14,'E V E R G L A D E S',11,80)]:
+    for lon,lat,s,sz,rot in [(-85.4,29.2,'GULF OF MEXICO',22,0),(-79.8,27.2,'ATLANTIC OCEAN',20,90),(-81.13,24.68,'FLORIDA KEYS',17,12),(-80.75,27.02,'Lake\nOkeechobee',14,0),(-81.26,26.03,'BIG CYPRESS',14,0),(-80.63,26.14,'EVERGLADES',17,80)]:
         txt(lon,lat,s,sz,'#adc5c8',ha='center',rotation=rot)
-    for lon,lat,s in [(-84.55,30.76,'APALACHEE'),(-82.35,30.15,'TIMUCUA-SPEAKING PEOPLES'),(-81.72,26.9,'CALUSA'),(-80.48,25.55,'TEQUESTA')]:
-        txt(lon,lat,s,10,'#d3cba8',ha='center',fontstyle='italic')
+    for lon,lat,s in [(-84.55,30.76,'APALACHEE'),(-82.35,30.15,'TIMUCUA-SPEAKING\nPEOPLES'),(-81.72,26.9,'CALUSA'),(-80.48,25.55,'TEQUESTA')]:
+        txt(lon,lat,s,15,'#e9dfb9',ha='center',fontstyle='italic')
     # Labels with leaders allow real site positions without enlarging settlement footprints.
     placements={
       'Anhaica':(-84.55,30.20,'Anhaica','Apalachee town'),
       'Tocobaga / Safety Harbor':(-84.0,28.65,'Tocobaga','Safety Harbor site'),
-      'Calos / Mound Key':(-83.20,26.18,'Calos / Mound Key*','Calusa capital; date caveat'),
-      'Tequesta':(-79.96,25.48,'Tequesta ~','Miami River village area'),
-      'San Agustin':(-80.37,29.62,'San Agustín · 1565','St. Augustine'),
-      'San Juan del Puerto':(-80.65,30.55,'San Juan del Puerto','Timucua mission community'),
+      'Calos / Mound Key':(-83.65,26.18,'Calos / Mound Key*','Calusa capital; date caveat'),
+      'Tequesta':(-80.05,25.28,'Tequesta ~','Miami River area'),
+      'San Agustin':(-80.37,29.62,'San Agustín','Founded 1565'),
+      'San Juan del Puerto':(-80.65,30.55,'San Juan\ndel Puerto','Timucua mission'),
     }
     for row in sites.itertuples():
         if row.name not in placements: continue
@@ -200,47 +200,49 @@ def render(rgb,sites,rivers,provenance):
         col='#e3c174' if row.kind=='Indigenous' else '#f39d75'
         marker='o' if row.kind=='Indigenous' else ('D' if row.kind=='Mission' else 's')
         hollow=row.temporal_confidence=='uncertain' or row.location_confidence!='supported'
-        ax.scatter([x],[y],s=45,marker=marker,c='none' if hollow else col,edgecolors=col,linewidths=1.2,zorder=8)
+        ax.scatter([x],[y],s=75,marker=marker,c='none' if hollow else col,edgecolors=col,linewidths=1.5,zorder=8)
         ax.plot([x,lx],[y,ly],color=col,alpha=.75,lw=.65,zorder=5)
-        ax.text(lx,ly+4500,title,fontsize=12,color=col,path_effects=halo,zorder=7)
-        ax.text(lx,ly-9000,sub,fontsize=9,color='#dbe5df',path_effects=halo,zorder=7)
+        ax.text(lx,ly+7000,title,fontsize=20,weight='bold',color=col,path_effects=halo,zorder=7)
+        ax.text(lx,ly-14000,sub,fontsize=15,color='#edf1ed',path_effects=halo,zorder=7)
     # Regional callout lists close mission sites; tiny distance cannot be resolved statewide.
-    txt(-80.30,29.12,'Nearby Timucua missions:\nNombre de Dios · by 1587\nSan Sebastián ~ · by 1587',9,'#efbd9f',linespacing=1.5,va='top')
-    txt(-85.0,31.18,'Beyond the Florida reconstruction',9,'#7e9695',ha='center')
+    txt(-80.35,29.10,'Missions by 1587:\nNombre de Dios\nSan Sebastián ~',15,'#f5cfb8',linespacing=1.45,va='top')
+    txt(-85.0,31.18,'Beyond this reconstruction',14,'#b1c4bf',ha='center')
     # Earlier event, explicitly distinct from active settlements.
-    x,y=xy(-82.60,27.60); lx,ly=xy(-84.05,27.18)
+    x,y=xy(-82.60,27.60); lx,ly=xy(-84.40,27.18)
     ax.scatter([x],[y],s=50,facecolors='none',edgecolors='#9bb5bd',marker='v',zorder=7)
     ax.plot([x,lx],[y,ly],color='#9bb5bd',lw=.6,ls=(0,(3,4)),zorder=5)
-    ax.text(lx,ly,'1539 · De Soto landing\nTampa Bay area; exact site disputed',fontsize=9,color='#a9bdc3',path_effects=halo,linespacing=1.5)
+    ax.text(lx,ly,'De Soto landing · 1539\nTampa Bay; exact site disputed',fontsize=15,color='#c5d6dc',path_effects=halo,linespacing=1.5)
     # Legend occupies open Gulf, not the land surface.
-    xx,yy=xy(-87.2,27.75)
-    ax.text(xx,yy,'READING THE LANDSCAPE',fontsize=12,weight='bold',color='#f0e5c9')
-    for i,(c,t) in enumerate([('#667548','Pine savannas & flatwoods'),('#345337','Hardwood & swamp forests'),('#637040','Marsh, prairie & slough mosaics'),('#305440','Mangroves & coastal wetlands')]):
-        ax.add_patch(plt.Rectangle((xx,yy-24000-i*19000),10000,8000,color=c))
-        ax.text(xx+17000,yy-22500-i*19000,t,fontsize=10)
-    yy-=117000
-    ax.text(xx,yy,'PEOPLE & PLACES',fontsize=12,weight='bold',color='#f0e5c9')
-    for i,(m,c,t) in enumerate([('o','#e3c174','Indigenous town / community'),('s','#f39d75','Spanish colonial town'),('D','#f39d75','Mission within an Indigenous community')]):
-        ax.scatter([xx+5000],[yy-23000-i*22000],marker=m,s=45,c=c)
-        ax.text(xx+17000,yy-26000-i*22000,t,fontsize=9.5)
-    ax.text(xx,yy-95000,'Filled: supported site location\nOpen / ~: approximate location or date caveat\nMarkers locate sites; they are not settlement areas.',fontsize=9,color='#c1cdd0',linespacing=1.7,va='top')
-    ax.text(xx,yy-167000,'AN INHABITED LANDSCAPE',fontsize=12,weight='bold',color='#f0e5c9')
-    ax.text(xx,yy-192000,'Farming, fire management, shellworks and canoe travel\nshaped this landscape. Their precise statewide footprints\nare not recoverable from the available evidence.\nNo invented fields, buildings or trails are drawn.',fontsize=9.5,color='#c1cdd0',linespacing=1.7,va='top')
+    xx,yy=xy(-87.2,28.65)
+    ax.text(xx,yy,'LANDSCAPES',fontsize=21,weight='bold',color='#f0e5c9')
+    for i,(c,t) in enumerate([('#667548','Pine savannas & flatwoods'),('#345337','Hardwood & swamp forests'),('#637040','Marsh, prairie & slough'),('#305440','Mangroves & coastal wetlands')]):
+        ax.add_patch(plt.Rectangle((xx,yy-31000-i*27000),12000,12000,color=c))
+        ax.text(xx+21000,yy-30000-i*27000,t,fontsize=17)
+    yy-=155000
+    ax.text(xx,yy,'PEOPLE & PLACES',fontsize=21,weight='bold',color='#f0e5c9')
+    for i,(m,c,t) in enumerate([('o','#e3c174','Indigenous town / community'),('s','#f39d75','Spanish colonial town'),('D','#f39d75','Mission in an Indigenous community')]):
+        ax.scatter([xx+6000],[yy-30000-i*30000],marker=m,s=80,c=c)
+        ax.text(xx+21000,yy-34000-i*30000,t,fontsize=17)
+    ax.text(xx,yy-120000,'Filled: supported site location\nOpen / ~: location or date uncertain\nSymbols are not settlement footprints.',fontsize=16,color='#dce5e5',linespacing=1.5,va='top')
+    ax.text(xx,yy-220000,'AN INHABITED LANDSCAPE',fontsize=21,weight='bold',color='#f0e5c9')
+    ax.text(xx,yy-248000,'Farming, managed fire, shellworks and\ncanoe travel shaped Florida. Exact fields,\ntrails and buildings are not invented here.',fontsize=16,color='#dce5e5',linespacing=1.5,va='top')
     # Grid north and projected scale.
     sx,sy=xy(-87.1,24.25)
     ax.plot([sx,sx+100000],[sy,sy],color='#e9eeeb',lw=3)
     for q in [0,50000,100000]: ax.plot([sx+q,sx+q],[sy-3000,sy+3000],color='#e9eeeb',lw=1)
     for q,label in [(0,'0'),(50000,'50'),(100000,'100 km')]:
-        ax.text(sx+q,sy+10000,label,fontsize=9,ha='center')
-    ax.text(sx,sy-18000,'Florida GDL Albers · EPSG:3087',fontsize=8,color='#a9bdc3')
-    ax.annotate('N',xy=(X1-47000,Y1-53000),xytext=(X1-47000,Y1-100000),ha='center',fontsize=12,arrowprops=dict(arrowstyle='-|>',color='#d7e1dc',lw=1.2))
-    fig.text(.055,.957,'Florida, circa 1600 — At the Dawn of Spanish Colonization',fontsize=25,weight='bold')
-    fig.text(.055,.928,'Historical landscape reconstruction based on ecological, geographic, and archaeological evidence.',fontsize=13,color='#bdcbd0',style='italic')
-    fig.text(.055,.905,'SATELLITE-STYLE RECONSTRUCTION   /   REGIONAL EVIDENCE, NOT HISTORICAL IMAGERY',fontsize=10,color='#e3c174')
-    fig.text(.055,.113,'WHAT IS KNOWN — AND WHAT IS INFERRED',fontsize=11,weight='bold',color='#e3c174')
-    fig.text(.055,.100,'Vegetation: Davis / FGDL (1967) regional proxy; SFWMD predevelopment Everglades (2007, generalized figure); Kissimmee floodplain (1952–54).\nCoasts and rivers are generalized geographic proxies, not surveyed 1600 positions. Texture and coastal water shading are illustrative.\n* Mound Key: capital documented in 1566; reoccupation in the early 1600s. Its exact 1600 occupancy is uncertain. Spanish fort abandoned 1569.',fontsize=9.5,color='#c3d0d1',linespacing=1.6,va='top')
-    fig.text(.055,.040,'Selected sites only • Indigenous labels do not delimit political borders • Water / landscape names are modern orientation aids\nNo later inland missions or stone Castillo • Santa Elena lies outside this Florida map • Sources and uncertainty: accompanying methodology',fontsize=9,color='#98b0b8',linespacing=1.6)
-    fig.text(.945,.020,'#30DayMapChallenge 2026   /   Day 10 · Prompting Only',ha='right',fontsize=10,color='#e3c174')
+        ax.text(sx+q,sy+10000,label,fontsize=15,ha='center')
+    ax.text(sx,sy-18000,'Florida GDL Albers · EPSG:3087',fontsize=13,color='#c6d5d8')
+    ax.annotate('N',xy=(X1-47000,Y1-53000),xytext=(X1-47000,Y1-100000),ha='center',fontsize=18,arrowprops=dict(arrowstyle='-|>',color='#d7e1dc',lw=1.5))
+    fig.text(.055,.963,'Florida, circa 1600',fontsize=37,weight='bold')
+    fig.text(.055,.936,'At the Dawn of Spanish Colonization',fontsize=29,weight='bold')
+    fig.text(.055,.912,'Historical landscape reconstruction based on ecological, geographic, and archaeological evidence.',fontsize=16,color='#d6e0e3',style='italic')
+    fig.text(.055,.889,'RECONSTRUCTION — NOT HISTORICAL SATELLITE IMAGERY',fontsize=17,color='#e3c174')
+    fig.text(.055,.126,'EVIDENCE & LIMITS',fontsize=20,weight='bold',color='#e3c174')
+    fig.text(.055,.106,'Vegetation: Davis / FGDL (1967), SFWMD (2007),\nand Kissimmee floodplain mapping (1952–54).\nCoasts and rivers are regional proxies.\nFine texture and water shading are illustrative.',fontsize=15,color='#d6e0e3',linespacing=1.45,va='top')
+    fig.text(.535,.106,'* Mound Key: exact 1600 occupation uncertain;\nSpanish fort abandoned in 1569. Selected sites only.\nCultural labels do not define political borders.\nFull sources and caveats: accompanying methodology.',fontsize=15,color='#d6e0e3',linespacing=1.45,va='top')
+    fig.text(.055,.028,'Water and landscape names are modern orientation aids.',fontsize=14,color='#becfd4')
+    fig.text(.945,.010,'#30DayMapChallenge 2026  /  Day 10 · Prompting Only',ha='right',fontsize=15,color='#e3c174')
     fig.savefig(O/'Florida_circa_1600.png',dpi=300,facecolor=fig.get_facecolor())
     plt.close(fig)
     with Image.open(O/'Florida_circa_1600.png') as im:
@@ -249,9 +251,9 @@ def render(rgb,sites,rivers,provenance):
     f,a=plt.subplots(figsize=(12,12),facecolor='#eef0e9')
     colors=np.array([[225,232,229],[104,135,105],[225,157,72],[83,151,188],[137,95,168]],np.uint8)
     a.imshow(colors[provenance],extent=extent); a.set_axis_off()
-    a.set_title('Florida reconstruction: evidence provenance',color='#18332c',fontsize=18,pad=20)
+    a.set_title('Florida reconstruction: evidence provenance',color='#18332c',fontsize=22,pad=20)
     handles=[Line2D([0],[0],marker='s',ls='',color=colors[i]/255,markersize=11,label=s) for i,s in enumerate(['Outside mapped reconstruction','Davis 1967: regional natural-vegetation proxy','Former urban cells: nearest natural class (low confidence)','SFWMD 2007 Figure 15: approximate regional registration','Kissimmee 1952–54: pre-channelization wetland / water proxy'])]
-    a.legend(handles=handles,loc='lower left',frameon=True,labelcolor='#18332c',fontsize=10)
+    a.legend(handles=handles,loc='lower left',frameon=True,labelcolor='#18332c',fontsize=13)
     f.savefig(O/'Evidence_provenance.png',dpi=180,facecolor=f.get_facecolor()); plt.close(f)
 
 if __name__=='__main__': main()
